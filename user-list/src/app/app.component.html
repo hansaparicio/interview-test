@@ -1,0 +1,36 @@
+<div class="card">
+  <p-dialog [(visible)]="visible" [style]="{ width: '300px' }" [modal]="true" >
+    <div class="profile-card">
+      <p-avatar [image]="selectedUser.pic" styleClass="mr-2" size="xlarge" shape="circle"></p-avatar>
+      <p-tag>{{'Nombre: ' + selectedUser.name}}</p-tag>
+      <p-tag>{{'Apellido: ' + selectedUser.lastName}}</p-tag>
+      <p-tag>{{'DNI: ' + selectedUser.dni}}</p-tag>
+      <p-tag>{{'Estado Civil: ' + selectedUser.civilStatus}}</p-tag>
+      <p-tag>{{'Codigo Postal: ' + selectedUser.postalCode}}</p-tag>
+    </div>
+  </p-dialog>
+  <p-table [value]="users">
+    <ng-template pTemplate="header">
+      <tr>
+        <th></th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>DNI</th>
+        <th>Estado Civil</th>
+        <th>Codigo Postal</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-user>
+      <tr (click)="showProfileCard(user)">
+        <td class="text-center">
+          <p-avatar [image]="user.pic" styleClass="mr-2" size="xlarge" shape="circle"></p-avatar>
+        </td>
+        <td>{{ user.name }}</td>
+        <td>{{ user.lastName }}</td>
+        <td>{{ user.dni }}</td>
+        <td>{{ user.civilStatus }}</td>
+        <td>{{ user.postalCode }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
